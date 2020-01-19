@@ -24,21 +24,20 @@ package com.xminj.lint.code.level_1;
 public class RotateStringByOffset {
 
     private static void  rotateString(char[] str, int offset) {
-        String s = String.valueOf(str);
-        if (s.equals("")&&s==null){
-            return;
-        }
-        offset = offset>str.length?offset%str.length:offset;
-        for (int i = 0; i < offset; i++) { //
-            char temp = str[str.length-1]; // 将最后一位数保留下来
-            for (int j = str.length - 1; j > 0; j--) {
-                str[j] = str[j-1];
+        if (str.length>0){
+            offset = offset>str.length?offset%str.length:offset;
+            for (int i = 0; i < offset; i++) { //
+                char temp = str[str.length-1]; // 将最后一位数保留下来
+                for (int j = str.length - 1; j > 0; j--) {
+                    str[j] = str[j-1];
+                }
+                str[0]=temp;
             }
-            str[0]=temp;
         }
     }
 
     public static void main(String[] args) {
-        String str = "abcdefg";
+        String str = "";
+        rotateString(str.toCharArray(),10);
     }
 }
